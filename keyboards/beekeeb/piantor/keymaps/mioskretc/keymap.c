@@ -4,7 +4,13 @@
 #endif
 #include "gpio.h"
 
-
+enum layer_names {
+    _QWERTY,
+    _COLEMAK,
+    _MOUSE,
+    _NAV,
+    _
+};
 
 #define A_LSFT LSFT_T(KC_A)
 #define S_L6 LT(7,KC_S)   // qwerty
@@ -115,61 +121,43 @@ KC_Z   , X_LCTLM, C_LALT , KC_V   , KC_B   ,                   KC_N   , KC_M   ,
 KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN,
 G(KC_A), A(KC_R), C(KC_S), S(KC_T), KC_G   ,                   KC_M   , S(KC_N), C(KC_E), A(KC_I), G(KC_O),
 KC_Z   , X_LCTLM, C_LALT , KC_D   , KC_V   ,                   KC_K   , KC_H   , CM_RALT, DO_RCTL, KC_SLSH,
-                  KC_ESC , TAB_L8 , ENT_LCT, SPC_L7 , KC_BSPC, KC_RGUI
+                           KC_ESC , TAB_L8 , ENT_LCT, SPC_L7 , KC_BSPC, KC_RGUI
 ),
-    [2] = LAYOUT_split_3x5_3( // mouse 
-_______, _______, MS_UP  , MS_WHLU, _______,                   _______, _______, _______, _______, _______,
+    [2] = LAYOUT_split_3x5_3( // mouse right out thumb 
+_______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, _______, _______, _______, _______,
 _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______,
-_______, _______, _______, MS_WHLD, DF(0)  ,                   XXXXXXX, XXXXXXX, _______, _______, _______,
-                                    _______, _______, _______, _______, _______, _______
+_______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX, _______, _______, _______,
+                           _______, _______, _______, _______, _______, _______
 ),
-    [3] = LAYOUT_split_3x5_3( // nav
-_______, _______, _______, _______, _______,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
-_______, _______, _______, PRETAB , NEXTAB ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-_______, _______, _______, _______, WINTAB ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                                    _______, _______, _______, _______, _______, _______
+    [3] = LAYOUT_split_3x5_3( // nav left out thumb
+_______, _______, PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+_______, _______, _______, _______, CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+_______, _______, _______, _______, _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+                           _______, _______, _______, _______, _______, _______
 ),
-    [4] = LAYOUT_split_3x5_3( // right 
-_______, _______, _______, _______, _______,                   _______, KC_UNDS, KC_PIPE, KC_QUOT, _______,
-KC_CIRC, KC_ASTR, KC_AMPR, _______, _______,                   KC_HASH, KC_TILD, KC_SLSH, KC_DQUO, KC_DLR ,
-_______, _______, _______, _______, _______,                   _______, KC_MINS, KC_BSLS, KC_GRV , _______,
-                                    _______, _______, _______, _______, _______, _______                  
-),
-    [n] = LAYOUT_split_3x5_3( // symb right mid thumb
-KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, _______,
+    [4] = LAYOUT_split_3x5_3( // symb right mid thumb
+KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
 _______, _______, _______, _______, KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
-_______, _______, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
-                                    _______, _______, _______, _______, _______, _______                  
+KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
+                           _______, _______, _______, _______, _______, _______                  
 ),
-    [5] = LAYOUT_split_3x5_3(
-_______, KC_COLN, KC_LT  , KC_GT  , KC_SCLN,                   _______, _______, _______, _______, _______,
-KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_AT  ,                   _______, _______, KC_EQL , KC_PLUS, KC_PERC,
-_______, KC_EXLM, KC_LBRC, KC_RBRC, XXXXXXX,                   _______, _______, _______, _______, _______,
-                                    _______, _______, _______, _______, _______, _______                  
+    [5] = LAYOUT_split_3x5_3( //func right inner thumb
+_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   _______, P2     , P1     , DF(1)  , _______,
+_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , _______,
+_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, _______, DF(2)  , _______,
+                           _______, _______, _______, _______, _______, _______                  
 ),
-    [6] = LAYOUT_split_3x5_3(
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   _______, KC_F2  , _______, _______, _______,
-_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   _______, KC_F5  , KC_F12 , _______, _______,
-_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, _______, _______, _______,
-                                    _______, _______, _______, _______, _______, _______                  
-),
-    [7] = LAYOUT_split_3x5_3(
+    [7] = LAYOUT_split_3x5_3( //num left mid thumb
 _______, _______, _______, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
 _______, _______, _______, _______, KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
-_______, _______, _______, _______, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
-                                    _______, _______, _______, _______, _______, _______                  
+_______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
+                           _______, _______, _______, LALT(KC_SPC), _______, _______                  
 ),
-    [8] = LAYOUT_split_3x5_3(
-CW_TOGG, KC_ASTR, KC_COLN, KC_ESC , KC_EQL ,                   DF(1)  , P2     , P1     , XXXXXXX, CSP    ,
-XXXXXXX, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX,
-XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB ,                   DF(2)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX,
-                                    _______, _______, KC_TAB , _______, _______, _______                  
-),
-    [9] = LAYOUT_split_3x5_3(
+    [9] = LAYOUT_split_3x5_3( //i3 left innner thumb
 WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
 XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
-                                    _______, _______, _______, LALT(KC_SPC), _______, _______                  
+                           _______, _______, _______, LALT(KC_SPC), _______, _______                  
 )
 };
 
