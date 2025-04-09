@@ -136,9 +136,9 @@ _______, _______, _______, _______, _______,                   _______, KC_MINS,
                                     _______, _______, _______, _______, _______, _______                  
 ),
     [n] = LAYOUT_split_3x5_3( // symb right mid thumb
-KC_EXLM, KC_AT  , KC_ASTR, KC_DLR , KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, _______,
+KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, _______,
 _______, _______, _______, _______, KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
-_______, _______, _______, _______, _______,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
+_______, _______, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
                                     _______, _______, _______, _______, _______, _______                  
 ),
     [5] = LAYOUT_split_3x5_3(
