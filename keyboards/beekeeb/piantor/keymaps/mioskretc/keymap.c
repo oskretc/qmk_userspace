@@ -163,14 +163,14 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX,
                            _______, _______, _______, _______, _______, _______
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
-_______, _______, PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
-OS_G   , OS_A   , OS_C   , OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-QK_BOOT, _______, _______, _______, _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+_______, C(KC_W), PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+OS_G   , C(KC_R), C(KC_S), OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+C(KC_Z), _______, _______, _______, _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, _______, _______, _______, _______, _______
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
-_______, _______, _______, _______, KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
+OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
 KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
                            _______, _______, _______, _______, _______, _______                  
 ),
@@ -182,7 +182,7 @@ _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______,
 ),
     [_NUM] = LAYOUT_split_3x5_3( //num left mid thumb
 _______, _______, _______, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
-_______, _______, _______, _______, KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
+OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
                            _______, _______, _______, LALT(KC_SPC), _______, _______                  
 ),
