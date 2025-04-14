@@ -166,7 +166,7 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX,
 _______, C(KC_W), PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                           _______, _______, _______, _______, _______, _______
+                           _______, _______, _______, KC_RSFT, _______, _______
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
