@@ -164,8 +164,8 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX,
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
 _______, C(KC_W), PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
-OS_G   , C(KC_R), C(KC_S), OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-C(KC_Z), _______, _______, _______, _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, _______, _______, _______, _______, _______
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
@@ -196,13 +196,17 @@ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   WS_LF  , WS_RG  ,
 
 const uint16_t PROGMEM combo_del[] = {KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_esc2[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_pastetocmd[] = {KC_R, KC_T, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_del, KC_DEL),
-    COMBO(combo_esc, KC_ESC), // keycodes with modifiers are possible too!
+    COMBO(combo_esc, KC_ESC), // 
+    COMBO(combo_esc2, KC_ESC), // 
     COMBO(combo_copy, LCTL(KC_C) ),
     COMBO(combo_paste, LCTL(KC_V) ),
+    COMBO(combo_pastetocmd, CSV),
 };
 
 
