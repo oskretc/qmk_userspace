@@ -152,7 +152,7 @@ KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   ,
 ),
     [_COLEMAK] = LAYOUT_split_3x5_3( // colemak
 KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN,
-A_GU   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , O_GU  ,
+KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , O_GU  ,
 KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
 ),
