@@ -181,7 +181,7 @@ _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______,
                            _______, _______, _______, _______, _______, _______                  
 ),
     [_NUM] = LAYOUT_split_3x5_3( //num left mid thumb
-_______, _______, _______, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
+_______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
                            _______, _______, _______, LALT(KC_SPC), _______, _______                  
