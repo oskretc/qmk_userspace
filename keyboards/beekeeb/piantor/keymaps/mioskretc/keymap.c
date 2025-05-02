@@ -151,8 +151,8 @@ KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   ,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
 ),
     [_COLEMAK] = LAYOUT_split_3x5_3( // colemak
-KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN,
-KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , O_GU  ,
+KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , SC_GU  ,
+KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , KC_O   ,
 KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
 ),
@@ -166,7 +166,7 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX,
 _______, C(KC_W), PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                           _______, _______, _______, KC_RSFT, _______, _______
+                           _______, KC_LCTL, _______, KC_RSFT, _______, _______
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
@@ -262,7 +262,7 @@ void keyboard_post_init_user(void) {
     // Enable the LED layers
     rgblight_layers = rgb_layers;
 
-    gpio_set_pin_output(23);
+    // gpio_set_pin_output(23);
     // gpio_write_pin_low(23);
     gpio_set_pin_output(25);
     gpio_write_pin_low(25);
