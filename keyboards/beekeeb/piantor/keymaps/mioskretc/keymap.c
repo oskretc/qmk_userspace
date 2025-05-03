@@ -142,6 +142,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define OS_C OSM(MOD_LCTL)
 #define OS_S OSM(MOD_LSFT)
 
+ // Notes
+ // easy to use mid finger and tab than nav layer on left hand
+ // ctrl shift p is ok in nav
+ // wintab is ok in nav
+ // 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x5_3( 
@@ -157,13 +162,13 @@ KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   ,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
 ),
     [_MOUSE] = LAYOUT_split_3x5_3( // mouse right out thumb 
-_______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, _______, _______, _______, _______,
+_______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, MS_WHLU, _______, _______, _______,
 _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______,
-_______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, XXXXXXX, _______, _______, QK_BOOT,
+_______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD, _______, _______, QK_BOOT,
                            _______, _______, _______, _______, _______, _______
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
-_______, C(KC_W), PRETAB , NEXTAB , WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+_______, C(KC_W), _______, _______, WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, KC_LCTL, _______, KC_RSFT, _______, _______
