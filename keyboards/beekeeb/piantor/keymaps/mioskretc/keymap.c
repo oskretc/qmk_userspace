@@ -85,6 +85,7 @@ void keyboard_pre_init_user(void) {
 enum custom_keycodes {
   P1 = SAFE_RANGE,
   P2,
+  P3,
   
 };
 
@@ -100,6 +101,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case P2:
         if (record->event.pressed) {
             send_string_with_delay(P2_S, 20);
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case P3:
+        if (record->event.pressed) {
+            send_string_with_delay(P3_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
@@ -175,7 +183,7 @@ KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC,
                            _______, _______, _______, _______, _______, _______                  
 ),
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   _______, P2     , P1     , DF(1)  , _______,
+_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , _______,
 _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , _______,
 _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, _______, DF(2)  , _______,
                            _______, _______, _______, _______, _______, _______                  
@@ -184,7 +192,7 @@ _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______,
 _______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
-                           _______, _______, _______, LALT(KC_SPC), _______, _______                  
+                           _______, _______, _______, LALT(KC_SPC), _______, KC_TAB                  
 ),
     [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
 WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
