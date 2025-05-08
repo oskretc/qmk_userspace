@@ -171,9 +171,9 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD,
                            _______, _______, _______, _______, _______, _______
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
-_______, C(KC_W), _______, _______, WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
-OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+_______, C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+OS_G   , OS_A   , OS_C   , OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+C(KC_Z), _______, KC_F4  , KC_F5  , KC_F7  ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, KC_LCTL, _______, KC_RSFT, _______, _______
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
@@ -196,8 +196,8 @@ _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   ,
 ),
     [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
 WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
-XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
-XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
+_______, _______, _______, _______, _______,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
+XXXXXXX, XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
                            _______, _______, _______, LALT(KC_SPC), _______, _______                  
 )
 };
