@@ -1,7 +1,8 @@
 #include QMK_KEYBOARD_H
 #if __has_include("keymap.h")
-#    include "keymap.h"
+#include "keymap.h"
 #endif
+#include "keymap_eurkey.h"
 #include "gpio.h"
 #include "ppp.h"
 
@@ -74,7 +75,7 @@ enum layer_names {
 #define WS_RG LSA(KC_F)
 #define WS_TAB RALT(KC_D)
 
-        
+
 void keyboard_pre_init_user(void) {
     gpio_set_pin_output(25);
     gpio_write_pin_low(25);
@@ -86,7 +87,8 @@ enum custom_keycodes {
   P1 = SAFE_RANGE,
   P2,
   P3,
-  
+  P4,
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -108,6 +110,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case P3:
         if (record->event.pressed) {
             send_string_with_delay(P3_S, 20);
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case P4:
+        if (record->event.pressed) {
+            send_string_with_delay(P4_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
@@ -134,11 +143,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define E_CT CTL_T(KC_E)
 #define N_SF SFT_T(KC_N)
 
-#define D_I3 LT(_I3,KC_DEL ) 
-#define T_NUM LT(_NUM,KC_TAB ) 
-#define E_NAV LT(_NAV,KC_ENT ) 
-#define S_MOU LT(_MOUSE,KC_SPC ) 
-#define B_SYM LT(_SYM,KC_BSPC ) 
+#define D_I3 LT(_I3,KC_DEL )
+#define T_NUM LT(_NUM,KC_TAB )
+#define E_NAV LT(_NAV,KC_ENT )
+#define S_MOU LT(_MOUSE,KC_SPC )
+#define B_SYM LT(_SYM,KC_BSPC )
 #define E_FUN LT(_FUN,KC_ESC )
 #define OS_G OSM(MOD_LGUI)
 #define OS_A OSM(MOD_LALT)
@@ -149,10 +158,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  // easy to use mid finger and tab than nav layer on left hand
  // ctrl shift p is ok in nav
  // wintab is ok in nav
- // 
+ //
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT_split_3x5_3( 
+    [_QWERTY] = LAYOUT_split_3x5_3(
 KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   ,
 A_GU   , S_AL   , D_CT   , F_SF   , KC_G   ,                   KC_H   , J_SF   , K_CT   , L_AL   , SC_GU  ,
 KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
@@ -164,7 +173,7 @@ KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   ,
 KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
 ),
-    [_MOUSE] = LAYOUT_split_3x5_3( // mouse right out thumb 
+    [_MOUSE] = LAYOUT_split_3x5_3( // mouse right out thumb
 _______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, MS_WHLU, _______, _______, _______,
 _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______,
 _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD, _______, _______, QK_BOOT,
@@ -180,25 +189,25 @@ C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN,
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
 KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
-                           _______, _______, _______, _______, _______, _______                  
+                           _______, _______, _______, _______, _______, _______
 ),
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , _______,
-_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , _______,
-_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, _______, DF(2)  , _______,
-                           _______, _______, _______, _______, _______, _______                  
+_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , EU_ARNG,
+_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , EU_OSTR,
+_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, EU_NTIL, P4     , DF(2)  , EU_AE  ,
+                           _______, _______, _______, _______, _______, _______
 ),
     [_NUM] = LAYOUT_split_3x5_3( //num left mid thumb
 _______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
-                           _______, _______, _______, LALT(KC_SPC), _______, KC_TAB                  
+                           _______, _______, _______, LALT(KC_SPC), _______, KC_TAB
 ),
     [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
 WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
 XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
-                           _______, _______, _______, LALT(KC_SPC), _______, _______                  
+                           _______, _______, _______, LALT(KC_SPC), _______, _______
 )
 };
 
@@ -210,8 +219,8 @@ const uint16_t PROGMEM combo_paste[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM combo_pastetocmd[] = {KC_R, KC_T, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_del, KC_DEL),
-    COMBO(combo_esc, KC_ESC), // 
-    COMBO(combo_esc2, KC_ESC), // 
+    COMBO(combo_esc, KC_ESC), //
+    COMBO(combo_esc2, KC_ESC), //
     COMBO(combo_copy, LCTL(KC_C) ),
     COMBO(combo_paste, LCTL(KC_V) ),
     COMBO(combo_pastetocmd, CSV),
