@@ -4,7 +4,7 @@
 #endif
 #include "keymap_eurkey.h"
 #include "gpio.h"
-#include "ppp.h"
+#include "secrets.h"
 
 enum layer_names {
     _QWERTY,
