@@ -13,7 +13,7 @@ echo "#define P4_S \"$(pass show nordic/main/osto_2025-10)\"" >> secrets.h
 
 cd ~/gitrepos/qmk_firmware
 util/docker_build.sh beekeeb/piantor:mioskretc
-
+cp beekeeb_piantor_mioskretc.uf2 /mnt/c/tmp
 echo "Changing back to the original directory..."
 cd "$original_dir"
 rm secrets.h

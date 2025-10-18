@@ -159,6 +159,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  // ctrl shift p is ok in nav
  // wintab is ok in nav
  //
+ // in Nav layer, it better to have the simple modifiers same as home row mods,
+ // because is better to use them for selection manipulation with arrows
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x5_3(
@@ -180,8 +182,8 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD,
                            _______, _______, _______, _______, _______, _______
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
-_______, C(KC_W), _______, _______, WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
-OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+_______, C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+OS_G   , OS_A   , OS_C   , OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, KC_LCTL, _______, KC_RSFT, _______, _______
 ),
