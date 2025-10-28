@@ -73,7 +73,7 @@ enum layer_names {
 
 #define WS_LF LSA(KC_A)
 #define WS_RG LSA(KC_F)
-#define WS_TAB RALT(KC_D)
+#define WS_TAB LALT(KC_D)
 
 
 void keyboard_pre_init_user(void) {
@@ -168,48 +168,56 @@ KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   ,
 A_GU   , S_AL   , D_CT   , F_SF   , KC_G   ,                   KC_H   , J_SF   , K_CT   , L_AL   , SC_GU  ,
 KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
+                           //del    tab      enter    space    backsp   escape
 ),
     [_COLEMAK] = LAYOUT_split_3x5_3( // colemak
 KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , SC_GU  ,
 KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , KC_O   ,
 KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
+                           //del    tab      enter    space    backsp   escape
 ),
     [_MOUSE] = LAYOUT_split_3x5_3( // mouse right out thumb
 _______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, MS_WHLU, _______, _______, _______,
 _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______,
 _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD, _______, _______, QK_BOOT,
                            _______, _______, _______, _______, _______, _______
+//                                                      MOU
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
 _______, C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , OS_A   , OS_C   , OS_S   , CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                           _______, KC_LCTL, _______, KC_RSFT, _______, _______
+                           _______, KC_LCTL, _______, C(KC_TAB), _______, _______
+//                                             NAV
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
 KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
                            _______, _______, _______, _______, _______, _______
+//                                                              SYMB
 ),
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
 _______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , _______,
 _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , _______,
 _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, P4     , DF(2)  , _______,
                            _______, _______, _______, _______, _______, _______
+//                                                                        FUNCT
 ),
     [_NUM] = LAYOUT_split_3x5_3( //num left mid thumb
 _______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_SLSH, KC_7   , KC_8   , KC_9   , KC_PLUS,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_0   , KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_1   , KC_2   , KC_3   , KC_EQL ,
                            _______, _______, _______, LALT(KC_SPC), _______, KC_TAB
+//                                    NUMB
 ),
     [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
 WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
-_______, _______, _______, _______, _______,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
+_______, _______, _______, _______, WS_TAB ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
 XXXXXXX, XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
-                           _______, _______, _______, LALT(KC_SPC), _______, _______
+                           _______, _______, _______, WS_TAB , _______, _______
+//                            I3
 )
 };
 
