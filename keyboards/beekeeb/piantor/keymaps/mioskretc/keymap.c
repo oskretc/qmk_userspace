@@ -153,7 +153,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define OS_A OSM(MOD_LALT)
 #define OS_C OSM(MOD_LCTL)
 #define OS_S OSM(MOD_LSFT)
-
+#define A_F4 LALT(KC_F4)
  // Notes
  // easy to use mid finger and tab than nav layer on left hand
  // ctrl shift p is ok in nav
@@ -185,9 +185,9 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD,
 //                                                      MOU
 ),
     [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
-_______, C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+A_F4   , C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , OS_A   , OS_C   , OS_S   , C(KC_G),                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
-C(KC_Z), _______, _______, KC_F5  , CSP    ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+C(KC_Z), C(KC_X), C(KC_C), KC_F5  , CSP    ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
                            _______, KC_LCTL, _______, C(KC_TAB), _______, _______
 //                                             NAV
 ),
