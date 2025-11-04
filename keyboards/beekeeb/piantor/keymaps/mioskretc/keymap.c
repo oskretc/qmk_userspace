@@ -188,14 +188,14 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD,
 A_F4   , C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , OS_A   , OS_C   , OS_S   , C(KC_G),                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), C(KC_X), C(KC_C), KC_F5  , CSP    ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                           _______, KC_LCTL, _______, C(KC_TAB), _______, _______
+                           _______, KC_LCTL, _______, C(KC_TAB), KC_LCTL, _______
 //                                             NAV
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
 KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
-OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
+OS_G   , OS_A   , OS_C   , KC_PLUS, KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
 KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
-                           _______, _______, _______, _______, _______, _______
+                           _______, _______, KC_UNDS, _______, _______, _______
 //                                                              SYMB
 ),
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
