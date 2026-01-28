@@ -2,7 +2,9 @@
 #if __has_include("keymap.h")
 #    include "keymap.h"
 #endif
+#include "ppp.h"
 #include "gpio.h"
+#include "ws2812.h"
 
 
 
@@ -66,8 +68,13 @@
 
         
 void keyboard_pre_init_user(void) {
+    gpio_set_pin_output(23);
     gpio_set_pin_output(25);
     gpio_write_pin_low(25);
+
+    ws2812_init();
+    ws2812_set_color(0, 128, 0, 0);
+    ws2812_flush();
 }
 
 /* THIS FILE WAS GENERATED!
@@ -87,14 +94,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case P1:
         if (record->event.pressed) {
-            send_string_with_delay("P1_S", 20);
+            send_string_with_delay(P1_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
         break;
     case P2:
         if (record->event.pressed) {
-            send_string_with_delay("P2_S", 20);
+            send_string_with_delay(P2_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
@@ -155,7 +162,7 @@ _______, _______, _______, _______, KC_EQL ,                   KC_DOT , KC_7   ,
 ),
     [8] = LAYOUT_split_3x5_3(
 CW_TOGG, KC_ASTR, KC_COLN, KC_ESC , KC_EQL ,                   DF(1)  , P2     , P1     , XXXXXXX, CSP    ,
-XXXXXXX, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX,
+UG_TOGG, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX,
 XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB ,                   DF(2)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX,
                                     _______, _______, KC_TAB , _______, _______, _______                  
 ),

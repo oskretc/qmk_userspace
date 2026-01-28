@@ -26,3 +26,12 @@
 #define MOUSEKEY_MOVE_DELTA 12
 #define MOUSEKEY_INITIAL_SPEED 64
 #define COMBO_ONLY_FROM_LAYER 0
+#define WS2812_DI_PIN GP23
+#define RGBLIGHT_LED_COUNT 2
+#define RGBLED_SPLIT { 1, 1 }
+#define RGBLIGHT_EFFECT_BREATHING
+#define RGBLIGHT_LIMIT_VA	128 //	The maximum brightness level
+#define RGBLIGHT_SLEEP	//Not defined	If defined, the RGB lighting will be switched off when the host goes to sleep
+#define RGBLIGHT_DEFAULT_MODE	RGBLIGHT_MODE_STATIC_LIGHT	// The default mode to use upon clearing the EEPROM
+#define RGBLIGHT_DEFAULT_ON	true
+#define WS2812_EXTERNAL_PULLUP

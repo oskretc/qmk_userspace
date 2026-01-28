@@ -1,0 +1,296 @@
+#include QMK_KEYBOARD_H
+#if __has_include("keymap.h")
+#include "keymap.h"
+#endif
+#include "keymap_eurkey.h"
+#include "gpio.h"
+#include "ppp.h"
+
+enum layer_names {
+    _QWERTY,
+    _COLEMAK,
+    _MOUSE,
+    _NAV,
+    _SYM,
+    _FUN,
+    _NUM,
+    _I3
+};
+
+#define A_LSFT LSFT_T(KC_A)
+#define S_L6 LT(7,KC_S)   // qwerty
+#define R_L6 LT(7,KC_R)   // colemak
+#define D_L2 LT(3,KC_D)  // qwerty
+#define S_L2 LT(3,KC_S)  // colemak
+#define F_L3 LT(4,KC_F) // qwerty
+#define T_L3 LT(4,KC_T) // colemak
+#define G_LSFT LSFT_T(KC_G)
+#define H_RSFT RSFT_T(KC_H) //qwerty
+#define M_RSFT RSFT_T(KC_M) //qwerty
+#define J_L4 LT(5,KC_J) // qwerty
+#define N_L4 LT(5,KC_N) // colemak
+#define K_L1 LT(2,KC_K) // qwerty
+#define E_L1 LT(2,KC_E) // colemak
+#define L_L5 LT(6,KC_L) // qwerty
+#define I_L5 LT(6,KC_I) // colemak
+#define SC_RSFT RSFT_T(KC_SCLN)
+
+
+#define X_LCTLM LCTL_T(KC_X)
+#define C_LALT LALT_T(KC_C)
+#define CM_RALT RALT_T(KC_COMM)
+#define DO_RCTL RCTL_T(KC_DOT)
+#define TAB_L8 LT(9,KC_TAB)
+#define ENT_LCT LCTL_T(KC_ENT)
+#define SPC_L7 LT(8,KC_SPC)
+
+#define PRETAB RCS(KC_TAB)
+#define NEXTAB LCTL(KC_TAB)
+#define WINTAB LGUI(KC_TAB)
+#define CSV RCS(KC_V)
+#define CSP RCS(KC_P)
+
+
+#define WS1 LALT(KC_1)
+#define WS2 LALT(KC_2)
+#define WS3 LALT(KC_3)
+#define WS4 LALT(KC_4)
+#define WS5 LALT(KC_5)
+#define WS6 LALT(KC_6)
+#define WS7 LALT(KC_7)
+#define WS8 LALT(KC_8)
+#define WS9 LALT(KC_9)
+#define WS0 LALT(KC_0)
+
+#define MV_LF LSA(KC_H)
+#define MV_UP LSA(KC_K)
+#define MV_DN LSA(KC_J)
+#define MV_RG LSA(KC_L)
+#define FO_LF LALT(KC_H)
+#define FO_DN LALT(KC_J)
+#define FO_UP LALT(KC_K)
+#define FO_RG LALT(KC_L)
+
+#define WS_LF LSA(KC_A)
+#define WS_RG LSA(KC_F)
+#define WS_TAB RALT(KC_D)
+
+        
+void keyboard_pre_init_user(void) {
+    gpio_set_pin_output(25);
+    gpio_write_pin_low(25);
+}
+
+
+
+enum custom_keycodes {
+  P1 = SAFE_RANGE,
+  P2,
+  P3,
+  
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case P1:
+        if (record->event.pressed) {
+            send_string_with_delay(P1_S, 20);
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case P2:
+        if (record->event.pressed) {
+            send_string_with_delay(P2_S, 20);
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case P3:
+        if (record->event.pressed) {
+            send_string_with_delay(P3_S, 20);
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    }
+    return true;
+};
+// home row mods qwerty
+#define A_GU GUI_T(KC_A)
+#define S_AL ALT_T(KC_S)
+#define D_CT CTL_T(KC_D)
+#define F_SF SFT_T(KC_F)
+#define SC_GU GUI_T(KC_SCLN)
+#define L_AL ALT_T(KC_L)
+#define K_CT CTL_T(KC_K)
+#define J_SF SFT_T(KC_J)
+// home row mods colemak
+// #define A_GU GUI_T(KC_A)
+#define R_AL ALT_T(KC_R)
+#define S_CT CTL_T(KC_S)
+#define T_SF SFT_T(KC_T)
+#define O_GU GUI_T(KC_O)
+#define I_AL ALT_T(KC_I)
+#define E_CT CTL_T(KC_E)
+#define N_SF SFT_T(KC_N)
+
+#define D_I3 LT(_I3,KC_DEL ) 
+#define T_NUM LT(_NUM,KC_TAB ) 
+#define E_NAV LT(_NAV,KC_ENT ) 
+#define S_MOU LT(_MOUSE,KC_SPC ) 
+#define B_SYM LT(_SYM,KC_BSPC ) 
+#define E_FUN LT(_FUN,KC_ESC )
+#define OS_G OSM(MOD_LGUI)
+#define OS_A OSM(MOD_LALT)
+#define OS_C OSM(MOD_LCTL)
+#define OS_S OSM(MOD_LSFT)
+
+ // Notes
+ // easy to use mid finger and tab than nav layer on left hand
+ // ctrl shift p is ok in nav
+ // wintab is ok in nav
+ // 
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_QWERTY] = LAYOUT_split_3x5_3( 
+KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   ,
+A_GU   , S_AL   , D_CT   , F_SF   , KC_G   ,                   KC_H   , J_SF   , K_CT   , L_AL   , SC_GU  ,
+KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
+                           D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
+),
+    [_COLEMAK] = LAYOUT_split_3x5_3( // colemak
+KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , SC_GU  ,
+KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , KC_O   ,
+KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
+                           D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
+),
+    [_MOUSE] = LAYOUT_split_3x5_3( // mouse right out thumb 
+_______, _______, MS_UP  , MS_WHLU, DF(0)  ,                   _______, MS_WHLU, _______, _______, _______,
+_______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______,
+_______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD, _______, _______, QK_BOOT,
+                           _______, _______, _______, _______, _______, _______
+),
+    [_NAV] = LAYOUT_split_3x5_3( // nav left out thumb
+_______, C(KC_W), _______, _______, WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
+OS_G   , C(KC_R), C(KC_S), C(KC_E), CSP    ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
+C(KC_Z), _______, _______, KC_F5  , _______,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
+                           _______, KC_LCTL, _______, KC_RSFT, _______, _______
+),
+    [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
+KC_EXLM, KC_AT  , KC_ASTR, KC_COLN, KC_EQL ,                   KC_UNDS, KC_LCBR, KC_RCBR, KC_QUOT, KC_PIPE,
+OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_HASH, KC_LPRN, KC_RPRN, KC_DQUO, KC_DLR ,
+KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC, KC_RBRC, KC_GRV , _______,
+                           _______, _______, _______, _______, _______, _______                  
+),
+    [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
+_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , EU_ARNG,
+_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , EU_OSTR,
+_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, EU_NTIL, _______, DF(2)  , EU_AE  ,
+                           _______, _______, _______, _______, _______, _______                  
+),
+    [_NUM] = LAYOUT_split_3x5_3( //num left mid thumb
+_______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS,
+OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS,
+_______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL ,
+                           _______, _______, _______, LALT(KC_SPC), _______, KC_TAB                  
+),
+    [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
+WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    ,
+XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX,
+XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
+                           _______, _______, _______, LALT(KC_SPC), _______, _______                  
+)
+};
+
+const uint16_t PROGMEM combo_del[] = {KC_V, KC_B, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_esc2[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_pastetocmd[] = {KC_R, KC_T, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(combo_del, KC_DEL),
+    COMBO(combo_esc, KC_ESC), // 
+    COMBO(combo_esc2, KC_ESC), // 
+    COMBO(combo_copy, LCTL(KC_C) ),
+    COMBO(combo_paste, LCTL(KC_V) ),
+    COMBO(combo_pastetocmd, CSV),
+};
+
+
+void caps_word_set_user(bool active) {
+    if (active) {
+        // Do something when Caps Word activates.
+        gpio_write_pin_high(25);
+    } else {
+        gpio_write_pin_low(25);
+    }
+}
+
+#ifdef OTHER_KEYMAP_C
+#    include OTHER_KEYMAP_C
+#endif // OTHER_KEYMAP_C
+
+#ifdef RGBLIGHT_ENABLE
+
+const rgblight_segment_t PROGMEM layer0_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_PURPLE}
+);
+const rgblight_segment_t PROGMEM layer1_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 170, 255, 75}
+);
+const rgblight_segment_t PROGMEM layer2_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 0, 255, 75}
+);
+const rgblight_segment_t PROGMEM layer3_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 191, 255, 75}
+);
+const rgblight_segment_t PROGMEM layer4_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 30, 218, 75}
+);
+const rgblight_segment_t PROGMEM layer5_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 11, 176, 75}
+);
+const rgblight_segment_t PROGMEM layer6_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, 106, 255, 75}
+);
+
+// Now define the array of layers. Later layers take precedence
+const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    layer0_colors,
+    layer1_colors,
+    layer2_colors,
+    layer3_colors,
+    layer4_colors,
+    layer5_colors,
+    layer6_colors
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = rgb_layers;
+
+    // gpio_set_pin_output(23);
+    // gpio_write_pin_low(23);
+    gpio_set_pin_output(25);
+    gpio_write_pin_low(25);
+}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, 0));
+    return state;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, 0));
+    rgblight_set_layer_state(1, layer_state_cmp(state, 1));
+    rgblight_set_layer_state(2, layer_state_cmp(state, 2));
+    rgblight_set_layer_state(3, layer_state_cmp(state, 3));
+    rgblight_set_layer_state(4, layer_state_cmp(state, 4));
+    rgblight_set_layer_state(5, layer_state_cmp(state, 5));
+    rgblight_set_layer_state(6, layer_state_cmp(state, 6));
+    return state;
+}
+
+#endif
