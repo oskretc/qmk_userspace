@@ -224,7 +224,7 @@ XXXXXXX, XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WS_LF  , WS_RG  ,
 KC_ESC , KC_Q   , KC_W   , KC_E   , KC_R   ,                   KC_T   , KC_L   , XXXXXXX, DF(1)  , XXXXXXX,
 KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   ,                   KC_P   , KC_O   , XXXXXXX, XXXXXXX, XXXXXXX,
 KC_ENT , KC_Z   , KC_X   , KC_C   , KC_SPC ,                   KC_V   , KC_B   , XXXXXXX, XXXXXXX, XXXXXXX,
-                           KC_LALT, KC_LCTL, KC_LSFT,LALT(KC_LEFT),LALT(KC_RIGHT), _______
+                           KC_LALT, KC_LCTL, KC_LSFT,LCG(KC_LEFT),LCG(KC_RIGHT), _______
 //
 )
 };
@@ -261,31 +261,31 @@ void caps_word_set_user(bool active) {
 #ifdef RGBLIGHT_ENABLE
 
 const rgblight_segment_t PROGMEM layer0_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_PURPLE} //qwerty
+    {0, 2, HSV_PURPLE}
 );
 const rgblight_segment_t PROGMEM layer1_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_ORANGE} //colemak
+    {0, 2, 170, 255, 75}
 );
 const rgblight_segment_t PROGMEM layer2_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_WHITE} //mouse
+    {0, 2, 0, 255, 75}
 );
 const rgblight_segment_t PROGMEM layer3_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_PINK} //nav
+    {0, 2, 191, 255, 75}
 );
 const rgblight_segment_t PROGMEM layer4_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_TURQUOISE} //symb
+    {0, 2, 30, 218, 75}
 );
 const rgblight_segment_t PROGMEM layer5_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_SPRINGGREEN} //fun
+    {0, 2, 11, 176, 75}
 );
 const rgblight_segment_t PROGMEM layer6_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_TEAL} //num
+    {0, 2, 106, 255, 75}
 );
 const rgblight_segment_t PROGMEM layer7_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_GREEN} //wm
+    {0, 2, 0, 60, 80}
 );
 const rgblight_segment_t PROGMEM layer8_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_GOLD} //g1
+    {0, 2, 65, 75, 90}
 );
 
 // Now define the array of layers. Later layers take precedence
@@ -312,7 +312,7 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, 0));
+    rgblight_set_layer_state(1, layer_state_cmp(state, 1));
     return state;
 }
 
@@ -324,6 +324,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(4, layer_state_cmp(state, 4));
     rgblight_set_layer_state(5, layer_state_cmp(state, 5));
     rgblight_set_layer_state(6, layer_state_cmp(state, 6));
+    rgblight_set_layer_state(7, layer_state_cmp(state, 7));
+    rgblight_set_layer_state(8, layer_state_cmp(state, 8));
     return state;
 }
 
