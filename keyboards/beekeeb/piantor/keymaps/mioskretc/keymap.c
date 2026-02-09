@@ -14,7 +14,8 @@ enum layer_names {
     _SYM,
     _FUN,
     _NUM,
-    _I3
+    _I3,
+    _G1
 };
 
 #define A_LSFT LSFT_T(KC_A)
@@ -199,8 +200,8 @@ KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC,
 //                                                              SYMB
 ),
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , DF(1)  , _______,
-_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , DF(0)  , _______,
+_______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , PDF(1)  , DF(8)  ,
+_______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , PDF(0)  , _______,
 _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, P4     , DF(2)  , _______,
                            _______, _______, _______, _______, _______, _______
 //                                                                        FUNCT
@@ -218,6 +219,13 @@ _______, _______, _______, _______, WS_TAB ,                   FO_LF  , FO_DN  ,
 XXXXXXX, XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX,
                            _______, _______, _______, WS_TAB , _______, _______
 //                            I3
+),
+    [_G1] = LAYOUT_split_3x5_3( //i3 left innner thumb
+KC_ESC , KC_Q   , KC_W   , KC_E   , KC_R   ,                   KC_T   , KC_L   , XXXXXXX, DF(1)  , XXXXXXX,
+KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   ,                   KC_P   , KC_O   , XXXXXXX, XXXXXXX, XXXXXXX,
+KC_ENT , KC_Z   , KC_X   , KC_C   , KC_SPC ,                   KC_V   , KC_B   , XXXXXXX, XXXXXXX, XXXXXXX,
+                           KC_LALT, KC_LCTL, KC_LSFT,LALT(KC_LEFT),LALT(KC_RIGHT), _______
+//
 )
 };
 
@@ -253,25 +261,31 @@ void caps_word_set_user(bool active) {
 #ifdef RGBLIGHT_ENABLE
 
 const rgblight_segment_t PROGMEM layer0_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_PURPLE}
+    {0, 2, HSV_PURPLE} //qwerty
 );
 const rgblight_segment_t PROGMEM layer1_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 170, 255, 75}
+    {0, 2, HSV_ORANGE} //colemak
 );
 const rgblight_segment_t PROGMEM layer2_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 0, 255, 75}
+    {0, 2, HSV_WHITE} //mouse
 );
 const rgblight_segment_t PROGMEM layer3_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 191, 255, 75}
+    {0, 2, HSV_PINK} //nav
 );
 const rgblight_segment_t PROGMEM layer4_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 30, 218, 75}
+    {0, 2, HSV_TURQUOISE} //symb
 );
 const rgblight_segment_t PROGMEM layer5_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 11, 176, 75}
+    {0, 2, HSV_SPRINGGREEN} //fun
 );
 const rgblight_segment_t PROGMEM layer6_colors[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 106, 255, 75}
+    {0, 2, HSV_TEAL} //num
+);
+const rgblight_segment_t PROGMEM layer7_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_GREEN} //wm
+);
+const rgblight_segment_t PROGMEM layer8_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_GOLD} //g1
 );
 
 // Now define the array of layers. Later layers take precedence
@@ -282,7 +296,9 @@ const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     layer3_colors,
     layer4_colors,
     layer5_colors,
-    layer6_colors
+    layer6_colors,
+    layer7_colors,
+    layer8_colors
 );
 
 void keyboard_post_init_user(void) {
