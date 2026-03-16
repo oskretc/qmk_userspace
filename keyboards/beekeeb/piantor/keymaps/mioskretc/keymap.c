@@ -18,6 +18,19 @@ enum layer_names {
     _G1
 };
 
+// Tap Dance declarations
+enum {
+    TD_ZERO_O,
+    TD_H_P,
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_ZERO_O] = ACTION_TAP_DANCE_DOUBLE(KC_0, KC_O),
+    [TD_H_P] = ACTION_TAP_DANCE_DOUBLE(KC_H, KC_P),
+};
+
 #define A_LSFT LSFT_T(KC_A)
 #define S_L6 LT(7,KC_S)   // qwerty
 #define R_L6 LT(7,KC_R)   // colemak
@@ -220,11 +233,11 @@ XXXXXXX, XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WS_LF  , WS_RG  ,
                            _______, _______, _______, WS_TAB , _______, _______
 //                            I3
 ),
-    [_G1] = LAYOUT_split_3x5_3( //i3 left innner thumb
-KC_ESC , KC_Q   , KC_W   , KC_E   , KC_R   ,                   KC_T   , KC_L   , XXXXXXX, DF(1)  , XXXXXXX,
-KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   ,                   KC_P   , KC_O   , XXXXXXX, XXXXXXX, XXXXXXX,
-KC_ENT , KC_Z   , KC_X   , KC_C   , KC_SPC ,                   KC_V   , KC_B   , XXXXXXX, XXXXXXX, XXXXXXX,
-                           KC_LALT, KC_LCTL, KC_LSFT,LCG(KC_LEFT),LCG(KC_RIGHT), _______
+    [_G1] = LAYOUT_split_3x5_3( //factorio sticky layer
+KC_ESC , KC_Q   , KC_W   , KC_E   , KC_R   ,                   KC_T   , KC_L   , KC_7   , KC_8   , KC_9   ,
+KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   ,                   TD(TD_H_P),TD(TD_ZERO_O)   , KC_4   , KC_5   , KC_6   ,
+KC_ENT , KC_Z   , KC_X   , KC_C   , KC_LSFT,                   KC_V   , KC_B   , KC_1   , KC_2   , KC_3   ,
+                           KC_LALT, KC_LCTL, KC_SPC ,LCG(KC_LEFT),LCG(KC_RIGHT), DF(1)
 //
 )
 };
@@ -330,3 +343,5 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 #endif
+
+
