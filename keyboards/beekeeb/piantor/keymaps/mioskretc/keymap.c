@@ -202,7 +202,7 @@ _______, _______, _______, MS_WHLD, CSV    ,                   XXXXXXX, MS_WHLD,
 A_F4   , C(KC_W), C(KC_S), C(KC_E), WINTAB ,                   KC_HOME, KC_PGUP, KC_END , _______, _______,
 OS_G   , OS_A   , OS_C   , OS_S   , C(KC_G),                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,
 C(KC_Z), C(KC_X), C(KC_C), KC_F5  , CSP    ,                   KC_DEL , KC_PGDN, KC_INS , _______, _______,
-                           _______, KC_LCTL, _______, C(KC_TAB), KC_LCTL, _______
+                           _______, KC_LCTL, _______, C(KC_TAB), KC_LBRC, KC_RBRC
 //                                             NAV
 ),
     [_SYM] = LAYOUT_split_3x5_3( // symb right mid thumb
