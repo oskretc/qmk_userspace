@@ -1,7 +1,7 @@
 layout: {qmk_keyboard: beekeeb/piantor, layout_name: LAYOUT_split_3x5_3}
 layers:
   QWERTY: [Q, W, E, R, T, Y, U, I, O, P, A GU, S AL, D CT, F SF, G, H, J SF, K CT, L AL, SC GU, Z, X, C, V, B, N, M, ',', ., /, {t: DEL, h: I3}, {t: TAB, h: NUM}, {t: ENTER, h: NAV}, {t: SPACE, h: MOUSE}, {t: BSPC, h: SYM}, {t: ESC, h: FUN}]
-  COLEMAK: [Q, W, F, P, B, J, L, U, Y, ;, A GU, R AL, S CT, T SF, G, M, N SF, E CT, I AL, O GU, Z, X, C, D, V, K, H, ',', ., /, {t: DEL, h: I3}, {t: TAB, h: NUM}, {t: ENTER, h: NAV}, {t: SPACE, h: MOUSE}, {t: BSPC, h: SYM}, {t: ESC, h: FUN}]
+  COLEMAK: [Q, W, F, P, B, J, L, U, Y, ; GU, A, R AL, S CT, T SF, G, M, N SF, E CT, I AL,O, Z, X, C, D, V, K, H, ',', ., /, {t: DEL, h: I3}, {t: TAB, h: NUM}, {t: ENTER, h: NAV}, {t: SPACE, h: MOUSE}, {t: BSPC, h: SYM}, {t: ESC, h: FUN}]
   MOUSE:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -40,42 +40,45 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   NAV:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - PRETAB
-  - NEXTAB
+  - A-F4
+  - C-w
+  - C-s
+  - C-e
   - WINTAB
   - HOME
   - PGUP
   - END
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+
   - OS G
   - OS A
   - OS C
   - OS S
-  - CSP
+  - C-g
   - LEFT
   - DOWN
   - UP
   - RGHT
   - {t: ▽, type: trans}
-  - QK BOOT
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+
+  - C-z
+  - C-x
+  - C-c
+  - F5
+  - C-S-p
   - DEL
   - PGDN
   - INS
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - C-Tab
+  - "["
+  - "]"
   SYM:
   - '!'
   - '@'
@@ -87,10 +90,10 @@ layers:
   - '}'
   - ''''
   - '|'
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - OS G
+  - OS A
+  - OS C
+  - +
   - '-'
   - '#'
   - (
@@ -107,9 +110,10 @@ layers:
   - ']'
   - '`'
   - {t: ▽, type: trans}
+
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - _
   - {t: ▽, type: trans}
   - {t: ▽, type: held}
   - {t: ▽, type: trans}
@@ -119,11 +123,12 @@ layers:
   - F2
   - F3
   - F10
-  - {t: ▽, type: trans}
+  - P3
   - P2
   - P1
   - {t: L1, h: toggle}
-  - {t: ▽, type: trans}
+  - {t: L8, h: toggle}
+
   - {t: ▽, type: trans}
   - F4
   - F5
@@ -134,6 +139,7 @@ layers:
   - F12
   - {t: L0, h: toggle}
   - {t: ▽, type: trans}
+
   - {t: ▽, type: trans}
   - F7
   - F8
@@ -141,32 +147,34 @@ layers:
   - F12
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - P4
   - {t: L2, h: toggle}
   - {t: ▽, type: trans}
+
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: held}
+
   NUM:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - PrtSc
   - '*'
   - +
-  - '0'
-  - '1'
-  - '2'
-  - '3'
+  - '/'
+  - '7'
+  - '8'
+  - '9'
   - +
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - OS G
+  - OS A
+  - OS C
+  - OS S
   - '-'
-  - /
+  - 0
   - '4'
   - '5'
   - '6'
@@ -177,32 +185,32 @@ layers:
   - CW TOGG
   - '='
   - .
-  - '7'
-  - '8'
-  - '9'
+  - '1'
+  - '2'
+  - '3'
   - '='
   - {t: ▽, type: trans}
   - {t: ▽, type: held}
   - {t: ▽, type: trans}
-  - Alt+SPC
+  - A-Spc
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Tab
   I3:
   - WS1
-  - WS2
+  - WS Brow
   - WS3
-  - WS4
-  - WS5
+  - WS Comm
+  - WS Term
   - WS6
   - WS7
   - WS8
   - WS9
   - WS0
-  - ''
-  - MV LF
-  - MV UP
-  - MV DN
-  - MV RG
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - WS TAB
   - FO LF
   - FO DN
   - FO UP
@@ -211,7 +219,7 @@ layers:
   - ''
   - ''
   - ''
-  - ''
+  - F5
   - ''
   - WS LF
   - WS RG
@@ -221,6 +229,14 @@ layers:
   - {t: ▽, type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Alt+SPC
+  - Alt+Tab
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+
+combos:
+  - {p: [0, 1], k: "Esc", l: ["COLEMAK"]}
+  - {p: [1, 2], k: "C-c", l: ["COLEMAK"]}
+  - {p: [2, 3], k: "C-v", l: ["COLEMAK"]}
+  - {p: [3, 4], k: "C-S-v", l: ["COLEMAK"]}
+  - {p: [23, 24], k: "Del", l: ["COLEMAK"]}
+  - {p: [25, 26], k: "Esc", l: ["COLEMAK"]}
