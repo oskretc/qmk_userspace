@@ -324,6 +324,15 @@ void keyboard_post_init_user(void) {
     gpio_write_pin_low(25);
 }
 
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case B_SYM: // resolve as hold as soon as another key goes down, so fast rolls like I' reach the SYM layer
+            return true;
+        default:
+            return false;
+    }
+}
+
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, 1));
     return state;

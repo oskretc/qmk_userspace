@@ -15,11 +15,12 @@
  */
 
 #pragma once
-#define MASTER_RIGHT
+// #define MASTER_RIGHT
 
 // #define LED_CAPS_LOCK_PIN 24
 // #define LED_PIN_ON_STATE 0
 #define PERMISSIVE_HOLD
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define TAPPING_TERM 280
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 // #define MK_KINETIC_SPEED
