@@ -31,35 +31,9 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_H_P] = ACTION_TAP_DANCE_DOUBLE(KC_H, KC_P),
 };
 
-#define A_LSFT LSFT_T(KC_A)
-#define S_L6 LT(7,KC_S)   // qwerty
-#define R_L6 LT(7,KC_R)   // colemak
-#define D_L2 LT(3,KC_D)  // qwerty
-#define S_L2 LT(3,KC_S)  // colemak
-#define F_L3 LT(4,KC_F) // qwerty
-#define T_L3 LT(4,KC_T) // colemak
-#define G_LSFT LSFT_T(KC_G)
-#define H_RSFT RSFT_T(KC_H) //qwerty
-#define M_RSFT RSFT_T(KC_M) //qwerty
-#define J_L4 LT(5,KC_J) // qwerty
-#define N_L4 LT(5,KC_N) // colemak
-#define K_L1 LT(2,KC_K) // qwerty
-#define E_L1 LT(2,KC_E) // colemak
-#define L_L5 LT(6,KC_L) // qwerty
-#define I_L5 LT(6,KC_I) // colemak
-#define SC_RSFT RSFT_T(KC_SCLN)
 
 
-#define X_LCTLM LCTL_T(KC_X)
-#define C_LALT LALT_T(KC_C)
-#define CM_RALT RALT_T(KC_COMM)
-#define DO_RCTL RCTL_T(KC_DOT)
-#define TAB_L8 LT(9,KC_TAB)
-#define ENT_LCT LCTL_T(KC_ENT)
-#define SPC_L7 LT(8,KC_SPC)
 
-#define PRETAB RCS(KC_TAB)
-#define NEXTAB LCTL(KC_TAB)
 #define WINTAB LGUI(KC_TAB)
 #define CSV RCS(KC_V)
 #define CSP RCS(KC_P)
@@ -76,10 +50,6 @@ tap_dance_action_t tap_dance_actions[] = {
 #define WS9 LALT(KC_9)
 #define WS0 LALT(KC_0)
 
-#define MV_LF LSA(KC_H)
-#define MV_UP LSA(KC_K)
-#define MV_DN LSA(KC_J)
-#define MV_RG LSA(KC_L)
 #define FO_LF LALT(KC_H)
 #define FO_DN LALT(KC_J)
 #define FO_UP LALT(KC_K)
@@ -152,7 +122,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define R_AL ALT_T(KC_R)
 #define S_CT CTL_T(KC_S)
 #define T_SF SFT_T(KC_T)
-#define O_GU GUI_T(KC_O)
 #define I_AL ALT_T(KC_I)
 #define E_CT CTL_T(KC_E)
 #define N_SF SFT_T(KC_N)
