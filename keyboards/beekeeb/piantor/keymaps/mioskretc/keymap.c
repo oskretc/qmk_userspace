@@ -227,7 +227,7 @@ _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______,
 _______, _______, KC_PSCR, KC_ASTR, KC_PLUS,                   KC_SLSH, KC_7   , KC_8   , KC_9   , KC_PLUS,
 OS_G   , OS_A   , OS_C   , OS_S   , KC_MINS,                   KC_0   , KC_4   , KC_5   , KC_6   , KC_MINS,
 _______, _______, _______, CW_TOGG, KC_EQL ,                   KC_DOT , KC_1   , KC_2   , KC_3   , KC_EQL ,
-                           _______, _______, _______, LALT(KC_SPC), _______, KC_TAB
+                           _______, _______, _______, LGUI(KC_SPC), _______, KC_TAB
 //                                    NUMB
 ),
     [_I3] = LAYOUT_split_3x5_3( //i3 left innner thumb
@@ -373,8 +373,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(6, layer_state_cmp(state, 6));
     rgblight_set_layer_state(7, layer_state_cmp(state, 7));
     rgblight_set_layer_state(8, layer_state_cmp(state, 8));
-    rgblight_set_layer_state(9, layer_state_cmp(state, 9));
-    return state;
+    rgblight_set_layer_state(9, layer_state_cmp(state, 9));    return state;
 }
 
 #endif
