@@ -157,9 +157,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define R_AL ALT_T(KC_R)
 #define S_CT CTL_T(KC_S)
 #define T_SF SFT_T(KC_T)
+#define D_GU GUI_T(KC_D)
 #define I_AL ALT_T(KC_I)
 #define E_CT CTL_T(KC_E)
 #define N_SF SFT_T(KC_N)
+#define H_GU GUI_T(KC_H)
 
 #define D_I3 LT(_I3,KC_DEL )
 #define T_NUM LT(_NUM,KC_TAB )
@@ -191,7 +193,7 @@ KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   ,
     [_COLEMAK] = LAYOUT_split_3x5_3( // colemak
 KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , SC_GU  ,
 KC_A   , R_AL   , S_CT   , T_SF   , KC_G   ,                   KC_M   , N_SF   , E_CT   , I_AL   , KC_O   ,
-KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   ,                   KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH,
+KC_Z   , KC_X   , KC_C   , D_GU   , KC_V   ,                   KC_K   , H_GU   , KC_COMM, KC_DOT , KC_SLSH,
                            D_I3   , T_NUM  , E_NAV  , S_MOU  , B_SYM  , E_FUN
                            //del    tab      enter    space    backsp   escape
 ),
