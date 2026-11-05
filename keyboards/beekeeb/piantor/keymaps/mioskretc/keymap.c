@@ -15,8 +15,13 @@ enum layer_names {
     _FUN,
     _NUM,
     _I3,
-    _G1
+    _G1,
+    _WM   // Win-based twin of _I3, swapped in by wm_mode (keep last)
 };
+
+// wm_mode: when true, holding the I3 key activates _WM (on top of _I3)
+static bool wm_mode = false;
+#define WM_MAGIC 0x574D0001UL
 
 // Tap Dance declarations
 enum {
@@ -59,6 +64,28 @@ tap_dance_action_t tap_dance_actions[] = {
 #define WS_RG LSA(KC_F)
 #define WS_TAB LALT(KC_D)
 
+// WM layer: same actions as the I3 layer but with Win as Mod
+#define WM1 LGUI(KC_1)
+#define WM2 LGUI(KC_2)
+#define WM3 LGUI(KC_3)
+#define WM4 LGUI(KC_4)
+#define WM5 LGUI(KC_5)
+#define WM6 LGUI(KC_6)
+#define WM7 LGUI(KC_7)
+#define WM8 LGUI(KC_8)
+#define WM9 LGUI(KC_9)
+#define WM0 LGUI(KC_0)
+
+#define WFO_LF LGUI(KC_H)
+#define WFO_DN LGUI(KC_J)
+#define WFO_UP LGUI(KC_K)
+#define WFO_RG LGUI(KC_L)
+
+#define WWS_LF LSG(KC_A)
+#define WWS_RG LSG(KC_F)
+#define WWS_TAB LGUI(KC_D)
+#define WM_INH LGUI(KC_ESC)   // niri toggle-keyboard-shortcuts-inhibit
+
 
 void keyboard_pre_init_user(void) {
     gpio_set_pin_output(25);
@@ -72,11 +99,19 @@ enum custom_keycodes {
   P2,
   P3,
   P4,
+  TG_WM,   // toggle I3 key between _I3 (Alt) and _WM (Win)
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+    case TG_WM:
+        if (record->event.pressed) {
+            wm_mode = !wm_mode;
+            eeconfig_update_user(wm_mode ? WM_MAGIC : 0);
+            layer_state_set(layer_state); // re-evaluate now, in case I3 is held
+        }
+        return false;
     case P1:
         if (record->event.pressed) {
             send_string_with_delay(P1_S, 20);
@@ -184,7 +219,7 @@ KC_CIRC, KC_AMPR, KC_PERC, KC_BSLS, KC_SLSH,                   KC_TILD, KC_LBRC,
     [_FUN] = LAYOUT_split_3x5_3( //func right inner thumb
 _______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   P3     , P2     , P1     , PDF(1)  , DF(8)  ,
 _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   KC_F2  , KC_F5  , KC_F12 , PDF(0)  , _______,
-_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, P4     , DF(2)  , _______,
+_______, KC_F7  , KC_F8  , KC_F9  , KC_F12 ,                   _______, _______, P4     , DF(2)  , TG_WM  ,
                            _______, _______, _______, _______, _______, _______
 //                                                                        FUNCT
 ),
@@ -208,6 +243,15 @@ KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   ,                   TD(TD_H_P),TD(TD_
 KC_ENT , KC_Z   , KC_X   , KC_C   , KC_LSFT,                   KC_V   , KC_B   , KC_1   , KC_2   , KC_3   ,
                            KC_LALT, KC_LCTL, KC_SPC ,LCG(KC_LEFT),LCG(KC_RIGHT), DF(1)
 //
+),
+    // Active on top of _I3 when wm_mode is on. Every key _I3 defines is
+    // overridden here so no Alt binding leaks through.
+    [_WM] = LAYOUT_split_3x5_3( //wm: win-as-mod twin of i3
+WM1    , WM2    , WM3    , WM4    , WM5    ,                   WM6    , WM7    , WM8    , WM9    , WM0    ,
+KC_LGUI, _______, _______, _______, WWS_TAB,                   WFO_LF , WFO_DN , WFO_UP , WFO_RG , XXXXXXX,
+WM_INH , XXXXXXX, XXXXXXX, KC_F5  , XXXXXXX,                   WWS_LF , WWS_RG , WWS_TAB, XXXXXXX, XXXXXXX,
+                           _______, _______, _______, WWS_TAB, _______, _______
+//                            WM
 )
 };
 
@@ -270,6 +314,10 @@ const rgblight_segment_t PROGMEM layer8_colors[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 2, 65, 75, 90}
 );
 
+const rgblight_segment_t PROGMEM layer9_colors[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_CYAN}
+);
+
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     layer0_colors,
@@ -280,12 +328,14 @@ const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     layer5_colors,
     layer6_colors,
     layer7_colors,
-    layer8_colors
+    layer8_colors,
+    layer9_colors
 );
 
 void keyboard_post_init_user(void) {
     // Enable the LED layers
     rgblight_layers = rgb_layers;
+    wm_mode = (eeconfig_read_user() == WM_MAGIC);
 
     // gpio_set_pin_output(23);
     // gpio_write_pin_low(23);
@@ -308,6 +358,12 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+    // _WM mirrors _I3 while wm_mode is on (it is higher, so it wins over _I3)
+    if (wm_mode && layer_state_cmp(state, _I3)) {
+        state |= ((layer_state_t)1 << _WM);
+    } else {
+        state &= ~((layer_state_t)1 << _WM);
+    }
     rgblight_set_layer_state(0, layer_state_cmp(state, 0));
     rgblight_set_layer_state(1, layer_state_cmp(state, 1));
     rgblight_set_layer_state(2, layer_state_cmp(state, 2));
@@ -317,6 +373,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(6, layer_state_cmp(state, 6));
     rgblight_set_layer_state(7, layer_state_cmp(state, 7));
     rgblight_set_layer_state(8, layer_state_cmp(state, 8));
+    rgblight_set_layer_state(9, layer_state_cmp(state, 9));
     return state;
 }
 
